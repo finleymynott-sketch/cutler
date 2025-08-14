@@ -1,0 +1,5 @@
+{
+  "axe": "clean",
+  "keyboard": "metric+scale focusable",
+  "hover_clear_ms": "<=120"
+}

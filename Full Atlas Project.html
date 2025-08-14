@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>World Atlas — Landing Page</title>
+    <meta name="description" content="Explore an interactive world map. Hover over countries to see their names." />
+    <meta name="theme-color" content="#0b1020" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌍</text></svg>">
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js" defer></script>
+    <script src="./script.js" type="module" defer></script>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <div class="brand">Atlas</div>
+        <nav class="nav">
+          <a href="#features">Features</a>
+          <a href="#map">Map</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero reveal">
+        <div class="container hero-inner">
+          <h1>Discover the world at a glance</h1>
+          <p>Interactive, responsive, and fast. Hover any country to instantly reveal its name.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#map">Explore the map</a>
+            <a class="btn btn-secondary" href="#features">Learn more</a>
+          </div>
+        </div>
+        <div class="hero-gradient" aria-hidden="true"></div>
+        <div class="scroll-hint" aria-hidden="true">Scroll
+          <span class="chevron">⌄</span>
+        </div>
+      </section>
+
+      <section id="features" class="features reveal">
+        <div class="container">
+          <h2>Built for clarity</h2>
+          <ul class="feature-list">
+            <li>
+              <h3>Interactive</h3>
+              <p>Hover to highlight and name countries. Zoom and pan to explore details.</p>
+            </li>
+            <li>
+              <h3>Responsive</h3>
+              <p>Looks great on mobile, tablet, and desktop with adaptive projection.</p>
+            </li>
+            <li>
+              <h3>Accessible</h3>
+              <p>Keyboard focus and ARIA labels on countries improve usability.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="map" class="map-section reveal">
+        <div class="container">
+          <div class="section-header">
+            <h2>World Atlas</h2>
+            <p class="section-subtitle">Hover a country to see its name. Scroll or pinch to zoom. Drag to pan.</p>
+          </div>
+          <div id="map-root" class="map-root" role="img" aria-label="Interactive world map">
+            <div class="controls-overlay" aria-label="Map controls">
+              <div class="controls-left">
+                <input id="country-search" class="search-input" type="search" placeholder="Search country…" autocomplete="off" list="country-list" aria-label="Search country" />
+                <datalist id="country-list"></datalist>
+                <div id="view-pills" class="view-pills" aria-label="Saved views"></div>
+              </div>
+              <div class="controls-right">
+                <button id="label-toggle" class="btn btn-secondary btn-sm" type="button" title="Toggle exonym/endonym labels">Labels</button>
+                <button id="reset-view" class="btn btn-secondary btn-sm" type="button" title="Reset view">Reset</button>
+                <button id="theme-toggle" class="btn btn-secondary btn-sm" type="button" title="Toggle theme">Theme</button>
+                <button id="save-view" class="btn btn-secondary btn-sm" type="button" title="Save current view">Save</button>
+                <button id="export-svg" class="btn btn-secondary btn-sm" type="button" title="Export SVG">SVG</button>
+                <button id="export-png" class="btn btn-secondary btn-sm" type="button" title="Export PNG">PNG</button>
+              </div>
+            </div>
+
+            <div id="info-card" class="info-card" hidden>
+              <button id="info-close" class="info-close" aria-label="Close">×</button>
+              <div class="info-header">
+                <img id="info-flag" class="info-flag" alt="" />
+                <h3 id="info-name" class="info-name"></h3>
+              </div>
+              <div class="info-body">
+                <p><strong>Region:</strong> <span id="info-region"></span></p>
+                <p><strong>Capital:</strong> <span id="info-capital"></span></p>
+                <p><strong>Population:</strong> <span id="info-pop"></span></p>
+                <p><strong>Area:</strong> <span id="info-area"></span> km²</p>
+                <p id="info-subregion-row" hidden><strong>Subregion:</strong> <span id="info-subregion"></span></p>
+                <hr />
+                <div id="info-state-block" hidden>
+                  <p><strong>State:</strong> <span id="info-state-name"></span></p>
+                  <p><strong>Population (approx):</strong> <span id="info-state-pop"></span></p>
+                  <p><strong>Capital (if available):</strong> <span id="info-state-cap"></span></p>
+                </div>
+              </div>
+            </div>
+
+            <div id="tooltip" class="tooltip" role="status" aria-live="polite" aria-hidden="true"></div>
+            <div id="map-error" class="map-error" hidden>
+              <div class="panel">
+                <p>We couldn’t load the map data.</p>
+                <button id="retry" class="btn btn-primary btn-sm" type="button">Retry</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact reveal">
+        <div class="container contact-inner">
+          <h2>Get in touch</h2>
+          <p>Have feedback or ideas? We’d love to hear from you.</p>
+          <a class="btn btn-primary" href="mailto:hello@example.com">hello@example.com</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Atlas</span>
+        <a href="#top" class="back-to-top" aria-label="Back to top">↑</a>
+      </div>
+    </footer>
+    <noscript>
+      <div class="noscript">This site works best with JavaScript enabled.</div>
+    </noscript>
+  </body>
+  </html>
+
+

@@ -1,0 +1,50 @@
+{
+  "overall": {
+    "absolute": {
+      "min": 4.4,
+      "mean": 6.02,
+      "max": 7.49
+    },
+    "quantile": {
+      "min": 4.47,
+      "mean": 5.75,
+      "max": 7.28
+    }
+  },
+  "government": {
+    "absolute": {
+      "min": 4.29,
+      "mean": 6.02,
+      "max": 7.4
+    },
+    "quantile": {
+      "min": 4.04,
+      "mean": 6.18,
+      "max": 7.48
+    }
+  },
+  "technology_sector": {
+    "absolute": {
+      "min": 4.7,
+      "mean": 5.69,
+      "max": 7.15
+    },
+    "quantile": {
+      "min": 4.18,
+      "mean": 5.35,
+      "max": 7.46
+    }
+  },
+  "data_infrastructure": {
+    "absolute": {
+      "min": 4.05,
+      "mean": 5.72,
+      "max": 7.37
+    },
+    "quantile": {
+      "min": 4.2,
+      "mean": 5.26,
+      "max": 6.85
+    }
+  }
+}
