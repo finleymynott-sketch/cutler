@@ -78,13 +78,17 @@
                 <datalist id="country-list"></datalist>
               </div>
               <div class="toolbar" role="group" aria-label="Map toolbar">
-                <div class="segmented" role="tablist" aria-label="Dataset">
+                <div class="segmented" role="tablist" aria-label="Dataset" id="dataset-tabs">
                   <button class="seg" data-layer="none" aria-selected="true">None</button>
                   <button class="seg" data-layer="readiness">Readiness</button>
                   <button class="seg" data-layer="exposure">Exposure</button>
                   <button class="seg" data-layer="grid">Grid</button>
                   <button class="seg" data-layer="compute">Compute</button>
                   <button class="seg" data-layer="oxford">Oxford</button>
+                </div>
+                <div class="mt8 desktop-pills">
+                  <label class="pill-on"><input type="checkbox" id="layer-safety"> Safety</label>
+                  <label class="pill-on"><input type="checkbox" id="layer-compute"> Compute</label>
                 </div>
                 <select id="layer-select" class="btn btn-secondary btn-sm custom-select" title="Select data layer" aria-label="Select data layer" hidden>
                   <option value="none">Layer: None</option>

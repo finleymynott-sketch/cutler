@@ -452,6 +452,10 @@ function setupControls() {
   const oxfordScale = document.getElementById('oxford-scale');
   const safetyToggle = document.getElementById('layer-safety');
   const computeToggle = document.getElementById('layer-compute');
+  const datasetTabs = document.getElementById('dataset-tabs');
+  const metricCombo = document.getElementById('metric-combobox');
+  const metricComboBtn = document.getElementById('metric-combo-button');
+  const metricComboList = document.getElementById('metric-combo-list');
   // Help/minimap removed in Stage 4
 
   const resetBtn = document.getElementById("reset-view");
@@ -585,12 +589,91 @@ function setupControls() {
   if (layerSelect) layerSelect.addEventListener('change', (e)=>{ const v=e.target.value||'none';
     document.getElementById('oxford-metric')?.toggleAttribute('hidden', v!=='oxford');
     document.getElementById('oxford-scale')?.toggleAttribute('hidden', v!=='oxford');
+    metricCombo?.toggleAttribute('hidden', v!=='oxford');
     renderLayer(v);
   });
   if (oxfordMetric) oxfordMetric.addEventListener('change', ()=>{ if (state.currentLayer==='oxford') renderLayer('oxford'); });
   if (oxfordScale) oxfordScale.addEventListener('change', ()=>{ if (state.currentLayer==='oxford') renderLayer('oxford'); });
   if (safetyToggle) safetyToggle.addEventListener('change', ()=> renderSafety());
   if (computeToggle) computeToggle.addEventListener('change', ()=> renderCompute());
+
+  // Wire segmented dataset tabs
+  if (datasetTabs) {
+    datasetTabs.querySelectorAll('button.seg').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const value = btn.getAttribute('data-layer') || 'none';
+        datasetTabs.querySelectorAll('button.seg').forEach(b => b.setAttribute('aria-selected', String(b === btn)));
+        if (layerSelect) {
+          const opt = Array.from(layerSelect.options).find(o => o.value === value);
+          if (opt) layerSelect.value = value;
+        }
+        document.getElementById('oxford-metric')?.toggleAttribute('hidden', value!=='oxford');
+        document.getElementById('oxford-scale')?.toggleAttribute('hidden', value!=='oxford');
+        metricCombo?.toggleAttribute('hidden', value!=='oxford');
+        renderLayer(value);
+      });
+    });
+  }
+
+  // Minimal Oxford metric combobox behavior
+  const metricOptions = [
+    { value: 'overall', label: 'Overall' },
+    { value: 'government', label: 'Government' },
+    { value: 'technology_sector', label: 'Technology sector' },
+    { value: 'data_infrastructure', label: 'Data infrastructure' }
+  ];
+  function populateMetricCombo() {
+    if (!metricComboList) return;
+    metricComboList.innerHTML = '';
+    for (const { value, label } of metricOptions) {
+      const li = document.createElement('li');
+      li.setAttribute('role', 'option');
+      li.dataset.value = value;
+      li.textContent = label;
+      li.tabIndex = -1;
+      li.addEventListener('click', () => selectMetric(value, label));
+      metricComboList.appendChild(li);
+    }
+  }
+  function openMetricCombo() {
+    if (!metricCombo || !metricComboBtn || !metricComboList) return;
+    metricComboBtn.setAttribute('aria-expanded', 'true');
+    metricComboList.hidden = false;
+    const first = metricComboList.querySelector('li');
+    if (first) first.focus();
+  }
+  function closeMetricCombo() {
+    if (!metricCombo || !metricComboBtn || !metricComboList) return;
+    metricComboBtn.setAttribute('aria-expanded', 'false');
+    metricComboList.hidden = true;
+  }
+  function selectMetric(value, label) {
+    if (oxfordMetric) oxfordMetric.value = value;
+    if (metricComboBtn) metricComboBtn.textContent = label;
+    closeMetricCombo();
+    if (state.currentLayer === 'oxford') renderLayer('oxford');
+  }
+  if (metricCombo && metricComboBtn && metricComboList) {
+    populateMetricCombo();
+    metricComboBtn.addEventListener('click', () => {
+      const expanded = metricComboBtn.getAttribute('aria-expanded') === 'true';
+      if (expanded) closeMetricCombo(); else openMetricCombo();
+    });
+    metricComboBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openMetricCombo(); }
+    });
+    metricComboList.addEventListener('keydown', (e) => {
+      const items = Array.from(metricComboList.querySelectorAll('li'));
+      const idx = items.indexOf(document.activeElement);
+      if (e.key === 'Escape') { e.preventDefault(); closeMetricCombo(); metricComboBtn.focus(); }
+      if (e.key === 'ArrowDown') { e.preventDefault(); const next = items[Math.min(items.length-1, idx+1)] || items[0]; next?.focus(); }
+      if (e.key === 'ArrowUp') { e.preventDefault(); const prev = items[Math.max(0, idx-1)] || items[items.length-1]; prev?.focus(); }
+      if (e.key === 'Enter') { e.preventDefault(); const el = document.activeElement; if (el && el.dataset?.value) {
+        const found = metricOptions.find(o => o.value === el.dataset.value);
+        if (found) selectMetric(found.value, found.label);
+      } }
+    });
+  }
 }
 
 function resetView() {
@@ -931,14 +1014,24 @@ function renderLayer(name){
   if (legendKey) {
     legendKey.innerHTML = '';
     const title = document.createElement('div'); title.className = 'title'; title.textContent = label; legendKey.appendChild(title);
-    for (let i=0;i<palette.length;i++){
-      const row = document.createElement('div'); row.className = 'row';
-      const sw = document.createElement('span'); sw.className = 'swatch'; sw.style.background = palette[i]; row.appendChild(sw);
-      const lo = i===0? breaks[0] : breaks[i-1]; const hi = breaks[i];
-      const fmt = name==='grid'? (x=>`${x>0?'+':''}${x.toFixed(1)}%`) : name==='oxford'? (x=>`${Math.round(x)}%`) : (x=>x.toFixed(0));
-      const txt = document.createElement('span'); txt.textContent = `${fmt(lo)} – ${fmt(hi)}`; row.appendChild(txt);
-      legendKey.appendChild(row);
-    }
+    // Continuous bar
+    const bar = document.createElement('div'); bar.className = 'bar';
+    // Build gradient from palette
+    const stops = palette.map((c, i) => `${c} ${(i/(palette.length-1))*100}%`).join(', ');
+    bar.style.background = `linear-gradient(90deg, ${stops})`;
+    const cursor = document.createElement('span'); cursor.className = 'cursor'; bar.appendChild(cursor);
+    bar.addEventListener('mousemove', (ev) => {
+      const rect = bar.getBoundingClientRect();
+      const x = Math.max(0, Math.min(rect.width, ev.clientX - rect.left));
+      cursor.style.left = `${x}px`;
+    });
+    legendKey.appendChild(bar);
+    const labels = document.createElement('div'); labels.className = 'labels';
+    const fmtEdge = name==='grid'? (x=>`${x>0?'+':''}${x.toFixed(1)}%`) : name==='oxford'? (x=>`${Math.round(x)}%`) : (x=>x.toFixed(0));
+    const left = document.createElement('span'); left.textContent = fmtEdge(breaks[0]);
+    const right = document.createElement('span'); right.textContent = fmtEdge(breaks[breaks.length-1]);
+    labels.appendChild(left); labels.appendChild(right);
+    legendKey.appendChild(labels);
   }
   // Respect current overlay toggles when switching layers
   if (document.getElementById('layer-safety')?.checked) renderSafety(); else state.g.selectAll('g.safety').remove();
@@ -963,7 +1056,8 @@ function renderCompute(){
   for (const site of state.data.compute){
     const f = state.countries.find(cf => String(cf.id).toUpperCase()===site.iso3);
     if (!f) continue; const p=state.path.centroid(f);
-    const r = Math.max(2.5, Math.min(7, Math.log(1+site.mw)));
+    const mw = Number(site.mw);
+    const r = Number.isFinite(mw) ? Math.max(2.5, Math.min(7, Math.log(1+mw))) : 2.5;
     const fill = site.status==='operational'? 'rgba(124,176,138,0.9)' : 'transparent';
     const stroke = site.status==='operational'? 'rgba(255,255,255,0.7)' : 'rgba(212,163,115,0.9)';
     const g = layer.append('g');

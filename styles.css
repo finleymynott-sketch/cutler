@@ -163,16 +163,24 @@ body {
   gap: 12px;
   z-index: 20;
 }
+.toolbar { opacity: 0.85; transition: opacity 200ms ease; }
+.toolbar:hover, .toolbar:focus-within { opacity: 1; }
 .controls-left { display: flex; align-items: center; gap: 8px; }
 .controls-right { display: flex; align-items: center; gap: 8px; }
 .view-pills { display: none; }
 .pill { display: none; }
+.desktop-pills .pill-on { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 999px; padding: 4px 8px; color: var(--muted); }
+.desktop-pills input { accent-color: var(--accent-2); }
 .legend { display: none; }
-.legend-key { position: absolute; left: 12px; bottom: 12px; background: rgba(11,16,32,0.85); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; color: var(--text); font-size: 12px; z-index: 9; min-width: 180px; }
+.legend-key { position: absolute; left: 12px; bottom: 12px; background: rgba(11,16,32,0.85); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; color: var(--text); font-size: 12px; z-index: 9; min-width: 220px; }
 .legend-key .title { font-weight: 600; margin-bottom: 6px; }
 .legend-key .row { display: flex; align-items: center; gap: 8px; margin: 3px 0; }
 .legend-key .swatch { display: inline-block; width: 16px; height: 10px; border-radius: 2px; }
 .legend-key .row span { color: var(--text); }
+/* Continuous legend */
+.legend-key .bar { position: relative; height: 10px; border-radius: 4px; border: 1px solid var(--border); background: linear-gradient(90deg, #223357, #9fbbe0); }
+.legend-key .labels { display: flex; justify-content: space-between; margin-top: 6px; color: var(--muted); }
+.legend-key .cursor { position: absolute; top: -2px; width: 2px; height: 14px; background: #fff; border-radius: 1px; pointer-events: none; opacity: 0.8; }
 .balance-bar { display: inline-block; width: 120px; height: 8px; border-radius: 999px; margin-left: 8px; background: linear-gradient(90deg, rgba(212,111,111,0.8) 0%, rgba(200,180,160,0.5) 50%, rgba(124,176,138,0.8) 100%); position: relative; vertical-align: middle; }
 .balance-bar .marker { position: absolute; top: -2px; width: 2px; height: 12px; background: #fff; border-radius: 1px; left: 50%; }
 
@@ -354,6 +362,12 @@ body.light .info-card { background: rgba(255,255,255,0.95); }
 
 @media (max-width: 600px) {
   .nav { display: none; }
+  /* Bottom sheet behavior */
+  .info-card { left: 0; right: 0; bottom: 0; width: auto; border-radius: 14px 14px 0 0; margin: 0 0 0 0; }
+  .legend-key { left: 8px; bottom: 8px; }
 }
+
+/* Selected segmented button */
+.segmented .seg[aria-selected="true"] { background: rgba(212, 163, 115, 0.15); border-color: var(--accent); }
 
 
