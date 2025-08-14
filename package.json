@@ -13,7 +13,7 @@
     "report": "playwright show-report",
     "perf": "node scripts/lighthouse.mjs",
     "a11y": "playwright test tests/a11y.spec.ts",
-    "postinstall": "playwright install --with-deps"
+    "postinstall": "node -e \"process.exit(process.env.NETLIFY||process.env.CI?0:1)\" || npx --yes playwright install"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.0",
