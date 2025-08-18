@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>World Atlas — Landing Page</title>
+    <meta name="description" content="Explore an interactive world map. Hover over countries to see their names." />
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0b1020" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="./styles.css" as="style" onload="this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="./styles.css" /></noscript>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌍</text></svg>">
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js" defer></script>
+    <script src="./script.js" type="module" defer></script>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <div class="brand">Atlas</div>
+        <nav class="nav">
+          <a href="#features">Features</a>
+          <a href="#map">Map</a>
+          <a href="#sources">Sources</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero reveal">
+        <div class="container hero-inner">
+          <h1>Discover the world at a glance</h1>
+          <p>Interactive, responsive, and fast. Hover any country to instantly reveal its name.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#map">Explore the map</a>
+            <a class="btn btn-secondary" href="#features">Learn more</a>
+          </div>
+        </div>
+        <div class="hero-gradient" aria-hidden="true"></div>
+        <div class="scroll-hint" aria-hidden="true">Scroll <span class="chevron">⌄</span></div>
+      </section>
+
+      <section id="features" class="features reveal">
+        <div class="container">
+          <h2>Built for clarity</h2>
+          <ul class="feature-list">
+            <li>
+              <h3>Interactive</h3>
+              <p>Hover to highlight and name countries. Zoom and pan to explore details.</p>
+            </li>
+            <li>
+              <h3>Responsive</h3>
+              <p>Looks great on mobile, tablet, and desktop with adaptive projection.</p>
+            </li>
+            <li>
+              <h3>Accessible</h3>
+              <p>Keyboard focus and ARIA labels on countries improve usability.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="map" class="map-section reveal">
+        <div class="container">
+          <div class="section-header">
+            <h2>World Atlas</h2>
+            <p class="section-subtitle">Hover a country to see its name. Scroll or pinch to zoom. Drag to pan.</p>
+          </div>
+            <div id="map-root" class="map-root" role="img" aria-label="Interactive world map">
+            <div class="controls-overlay" aria-label="Map controls">
+              <div class="controls-left">
+                <input id="country-search" class="search-input" type="search" placeholder="Search country…" autocomplete="off" list="country-list" aria-label="Search country" />
+                <datalist id="country-list"></datalist>
+              </div>
+              <div class="toolbar" role="group" aria-label="Map toolbar">
+                <div class="segmented" role="tablist" aria-label="Dataset">
+                  <button class="seg" data-layer="none" aria-selected="true">None</button>
+                  <button class="seg" data-layer="readiness">Readiness</button>
+                  <button class="seg" data-layer="exposure">Exposure</button>
+                  <button class="seg" data-layer="grid">Grid</button>
+                  <button class="seg" data-layer="compute">Compute</button>
+                  <button class="seg" data-layer="oxford">Oxford</button>
+                </div>
+                <select id="layer-select" class="btn btn-secondary btn-sm custom-select" title="Select data layer" aria-label="Select data layer" hidden>
+                  <option value="none">Layer: None</option>
+                  <option value="readiness">Readiness</option>
+                  <option value="exposure">Exposure</option>
+                  <option value="grid">Grid headroom</option>
+                  <option value="compute">Compute</option>
+                  <option value="oxford">AI Readiness (Oxford)</option>
+                </select>
+                <div id="metric-combobox" class="combobox" hidden>
+                  <button id="metric-combo-button" class="combo-button" type="button" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="metric-combo-list" aria-label="Metric">Overall</button>
+                  <ul id="metric-combo-list" class="combo-list" role="listbox" hidden></ul>
+                </div>
+                <select id="oxford-metric" class="btn btn-secondary btn-sm custom-select" title="Metric" aria-label="Metric" hidden>
+                  <option value="overall">Overall</option>
+                  <option value="government">Government</option>
+                  <option value="technology_sector">Technology & Data (Tech)</option>
+                  <option value="data_infrastructure">Technology & Data (Infra)</option>
+                </select>
+                <div class="segmented scale" id="scale-seg" hidden>
+                  <button class="seg" data-scale="absolute" aria-selected="true">Abs</button>
+                  <button class="seg" data-scale="quantile">Quant</button>
+                </div>
+                <button id="label-toggle" class="btn btn-secondary btn-sm icon ghost" type="button" title="Labels" aria-pressed="false">👁</button>
+                <button id="reset-view" class="btn btn-secondary btn-sm ghost" type="button" title="Reset">↺</button>
+              </div>
+            </div>
+
+            <div id="layers-popover" class="layers-popover" hidden>
+              <div class="inner">
+                <div class="segmented" role="tablist" aria-label="Layer (mobile)">
+                  <button class="seg" data-layer="none" aria-selected="true">None</button>
+                  <button class="seg" data-layer="readiness">Readiness</button>
+                  <button class="seg" data-layer="exposure">Exposure</button>
+                  <button class="seg" data-layer="grid">Grid</button>
+                  <button class="seg" data-layer="compute">Compute</button>
+                  <button class="seg" data-layer="oxford">Oxford</button>
+                </div>
+                <div class="mt8">
+                  <label class="pill"><input type="checkbox" id="layer-safety-mobile"> Safety</label>
+                  <label class="pill"><input type="checkbox" id="layer-compute-mobile"> Compute</label>
+                </div>
+                <div class="mt8">
+                  <select id="oxford-metric-mobile" class="btn btn-secondary btn-sm" hidden>
+                    <option value="overall">Overall</option>
+                    <option value="government">Government</option>
+                    <option value="technology_sector">Technology sector</option>
+                    <option value="data_infrastructure">Data infrastructure</option>
+                  </select>
+                  <select id="oxford-scale-mobile" class="btn btn-secondary btn-sm" hidden>
+                    <option value="absolute">Scale: Absolute</option>
+                    <option value="quantile">Scale: Quantile</option>
+                  </select>
+                </div>
+                <button id="layers-popover-close" class="btn btn-primary btn-sm mt8" type="button">Done</button>
+              </div>
+            </div>
+
+            <div id="info-card" class="info-card" hidden>
+              <button id="info-close" class="info-close" aria-label="Close">×</button>
+              <div class="info-header">
+                <img id="info-flag" class="info-flag" alt="" loading="lazy" decoding="async" />
+                <h3 id="info-name" class="info-name"></h3>
+              </div>
+              <div class="info-body">
+                <p><strong>Region:</strong> <span id="info-region"></span></p>
+                <p><strong>Capital:</strong> <span id="info-capital"></span></p>
+                <p><strong>Population:</strong> <span id="info-pop"></span></p>
+                <p><strong>Area:</strong> <span id="info-area"></span> km²</p>
+                <p id="info-oxford-row" hidden>
+                  <strong>AI Readiness (Oxford 2024):</strong>
+                  <span id="info-oxford-overall"></span>
+                  <span class="tag">overall</span>
+                  <br />
+                  <span id="info-oxford-gov"></span>
+                  <span class="tag">government</span>
+                  <br />
+                  <span id="info-oxford-tech"></span>
+                  <span class="tag">technology sector</span>
+                  <br />
+                  <span id="info-oxford-data"></span>
+                  <span class="tag">data infrastructure</span>
+                </p>
+                <p id="info-subregion-row" hidden><strong>Subregion:</strong> <span id="info-subregion"></span></p>
+                <hr />
+                
+                <p id="info-compute-total-row" hidden>
+                  <strong>Compute capacity:</strong> <span id="info-compute-total"></span>
+                </p>
+                <div id="info-sites-block" hidden>
+                  <p><strong>AI Compute/Data Sites</strong></p>
+                  <ul id="info-sites-list" class="site-list"></ul>
+                </div>
+                <p id="info-balance-row" hidden>
+                  <strong>Balance:</strong> <span id="info-balance"></span>
+                  <span id="info-balance-bar" class="balance-bar" aria-hidden="true"><span class="marker"></span></span>
+                </p>
+              </div>
+            </div>
+
+            <div id="tooltip" class="tooltip" role="status" aria-live="polite" aria-hidden="true"></div>
+            <div id="legend-key" class="legend-key" aria-live="polite" aria-hidden="false"></div>
+            <div id="map-error" class="map-error" hidden>
+              <div class="panel">
+                <p>We couldn’t load the map data.</p>
+                <button id="retry" class="btn btn-primary btn-sm" type="button">Retry</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sources" class="sources reveal">
+        <div class="container">
+          <h2>Sources</h2>
+          <ul class="source-list">
+            <li>
+              World boundaries GeoJSON: <a href="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/DATA/world.geojson" target="_blank" rel="noopener noreferrer">D3 Graph Gallery world.geojson</a> (Natural Earth derived)
+            </li>
+            <li>
+              Country details and flags: <a href="https://restcountries.com/" target="_blank" rel="noopener noreferrer">REST Countries v3</a>
+            </li>
+            <li>
+              Government AI Readiness (2024): <a href="https://www.oxfordinsights.com/government-ai-readiness-index" target="_blank" rel="noopener noreferrer">Oxford Insights</a>
+            </li>
+            <li>
+              Project datasets bundled under <code>data/</code>: <code>aliases.json</code>, <code>aliases_ext.json</code>, <code>readiness.json</code>, <code>exposure.json</code>, <code>grid_headroom.json</code>, <code>safety_footprint.json</code>, <code>compute_sites.json</code>, <code>g20_meta.json</code>, <code>endonyms.json</code>, <code>iso2to3.json</code>, <code>oxford_readiness_2024_long_iso3.csv</code>
+            </li>
+          </ul>
+          <p class="source-note">Where possible, numeric values are loaded directly from the cited sources; otherwise, they are compiled in the project data files above.</p>
+        </div>
+      </section>
+
+      <section id="contact" class="contact reveal">
+        <div class="container contact-inner">
+          <h2>Get in touch</h2>
+          <p>Have feedback or ideas? We’d love to hear from you.</p>
+          <a class="btn btn-primary" href="mailto:hello@example.com">hello@example.com</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Atlas</span>
+        <a href="#top" class="back-to-top" aria-label="Back to top">↑</a>
+      </div>
+    </footer>
+    <noscript>
+      <div class="noscript">This site works best with JavaScript enabled.</div>
+    </noscript>
+  </body>
+  </html>
+

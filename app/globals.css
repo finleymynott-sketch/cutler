@@ -1,0 +1,74 @@
+/* Accessible defaults for dark-surface UI elements */
+
+:root {
+	--muted-on-dark: #cbd5e1; /* legible muted text on dark */
+	--card-border-dark: #334155; /* visible border on dark */
+}
+
+/* Utility: use for muted body text on dark surfaces */
+.text-muted-on-dark {
+	color: var(--muted-on-dark);
+}
+
+/* Utility: use for borders on dark cards/overlays */
+.border-card-dark {
+	border-color: var(--card-border-dark);
+}
+
+/* Pattern: dark overlay/card container */
+.card-dark {
+	color: var(--muted-on-dark);
+	border: 1px solid var(--card-border-dark);
+	background-color: rgba(2, 6, 23, 0.7); /* near-slate-950 w/ alpha */
+	backdrop-filter: blur(4px);
+}
+
+
+/* Theme tokens (dark) applied at body level */
+body {
+	--bg: #0b1220; /* background */
+	--panel: #0f172a; /* primary panel surface */
+	--panel-2: #1f2937; /* secondary panel surface */
+	--border: #334155; /* border colour */
+	--text: #e5e7eb; /* foreground text */
+	--muted: #94a3b8; /* subdued text/icons */
+	--accent: #38bdf8; /* accent (links, focus) */
+
+	color-scheme: dark;
+	background-color: var(--bg);
+	color: var(--text);
+	font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Base element resets that respect theme tokens */
+* {
+	outline-color: var(--accent);
+}
+
+a {
+	color: var(--accent);
+	text-underline-offset: 2px;
+    transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease, opacity 150ms ease, transform 150ms ease;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+hr {
+	border-color: var(--border);
+}
+
+/* Interactive element polish */
+button,
+select {
+	transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease, opacity 150ms ease, transform 150ms ease;
+}
+
+/* High-visibility keyboard focus that works on dark backgrounds */
+:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px rgba(255,255,255,0.15);
+	border-color: currentColor;
+}
+

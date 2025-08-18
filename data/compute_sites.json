@@ -1,0 +1,634 @@
+[
+  {
+    "iso3": "USA",
+    "site_name": "Nevada Hyperscale 1",
+    "status": "operational",
+    "mw": 250,
+    "type": "HPC"
+  },
+  {
+    "iso3": "USA",
+    "site_name": "Texas Compute Park",
+    "status": "announced",
+    "mw": 350,
+    "type": "AI/Data Center"
+  },
+  {
+    "iso3": "GBR",
+    "site_name": "Teesside Compute Campus",
+    "status": "operational",
+    "mw": 220,
+    "type": "AI/Data Center"
+  },
+  {
+    "iso3": "DEU",
+    "site_name": "Rhein Data Hub",
+    "status": "announced",
+    "mw": 210,
+    "type": "AI/Data Center"
+  },
+  {
+    "iso3": "CHN",
+    "site_name": "Inner Mongolia HPC",
+    "status": "operational",
+    "mw": 600,
+    "type": "HPC"
+  },
+  {
+    "iso3": "IND",
+    "site_name": "Gujarat AI Park",
+    "status": "announced",
+    "mw": 240,
+    "type": "AI/Data Center"
+  },
+  {
+    "iso3": "USA",
+    "site_name": "AWS us-east-1 (N. Virginia)",
+    "type": "cloud_region",
+    "operator": "Amazon Web Services",
+    "city": "Ashburn, VA",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid; multiple campuses"
+  },
+  {
+    "iso3": "USA",
+    "site_name": "AWS us-east-2 (Ohio)",
+    "type": "cloud_region",
+    "operator": "Amazon Web Services",
+    "city": "Columbus, OH",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "USA",
+    "site_name": "AWS us-west-1 (N. California)",
+    "type": "cloud_region",
+    "operator": "Amazon Web Services",
+    "city": "San Jose, CA",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "USA",
+    "site_name": "AWS us-west-2 (Oregon)",
+    "type": "cloud_region",
+    "operator": "Amazon Web Services",
+    "city": "Boardman, OR",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "IRL",
+    "site_name": "AWS eu-west-1 (Ireland)",
+    "type": "cloud_region",
+    "operator": "Amazon Web Services",
+    "city": "Dublin",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "GBR",
+    "site_name": "AWS eu-west-2 (London)",
+    "type": "cloud_region",
+    "operator": "Amazon Web Services",
+    "city": "London",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "DEU",
+    "site_name": "AWS eu-central-1 (Frankfurt)",
+    "type": "cloud_region",
+    "operator": "Amazon Web Services",
+    "city": "Frankfurt",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "SWE",
+    "site_name": "AWS eu-north-1 (Stockholm)",
+    "type": "cloud_region",
+    "operator": "Amazon Web Services",
+    "city": "Stockholm",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "IND",
+    "site_name": "AWS ap-south-1 (Mumbai)",
+    "type": "cloud_region",
+    "operator": "Amazon Web Services",
+    "city": "Mumbai",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "JPN",
+    "site_name": "AWS ap-northeast-1 (Tokyo)",
+    "type": "cloud_region",
+    "operator": "Amazon Web Services",
+    "city": "Tokyo",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "SGP",
+    "site_name": "AWS ap-southeast-1 (Singapore)",
+    "type": "cloud_region",
+    "operator": "Amazon Web Services",
+    "city": "Singapore",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "AUS",
+    "site_name": "AWS ap-southeast-2 (Sydney)",
+    "type": "cloud_region",
+    "operator": "Amazon Web Services",
+    "city": "Sydney",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "BHR",
+    "site_name": "AWS me-south-1 (Bahrain)",
+    "type": "cloud_region",
+    "operator": "Amazon Web Services",
+    "city": "Manama",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "BRA",
+    "site_name": "AWS sa-east-1 (São Paulo)",
+    "type": "cloud_region",
+    "operator": "Amazon Web Services",
+    "city": "São Paulo",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "USA",
+    "site_name": "GCP us-central1 (Iowa)",
+    "type": "cloud_region",
+    "operator": "Google Cloud",
+    "city": "Council Bluffs, IA",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "USA",
+    "site_name": "GCP us-east4 (N. Virginia)",
+    "type": "cloud_region",
+    "operator": "Google Cloud",
+    "city": "Ashburn, VA",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "USA",
+    "site_name": "GCP us-west1 (Oregon)",
+    "type": "cloud_region",
+    "operator": "Google Cloud",
+    "city": "The Dalles, OR",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "BEL",
+    "site_name": "GCP europe-west1 (Belgium)",
+    "type": "cloud_region",
+    "operator": "Google Cloud",
+    "city": "St. Ghislain",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "NLD",
+    "site_name": "GCP europe-west4 (Netherlands)",
+    "type": "cloud_region",
+    "operator": "Google Cloud",
+    "city": "Eemshaven",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "TWN",
+    "site_name": "GCP asia-east1 (Taiwan)",
+    "type": "cloud_region",
+    "operator": "Google Cloud",
+    "city": "Changhua County",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "JPN",
+    "site_name": "GCP asia-northeast1 (Tokyo)",
+    "type": "cloud_region",
+    "operator": "Google Cloud",
+    "city": "Tokyo",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "SGP",
+    "site_name": "GCP asia-southeast1 (Singapore)",
+    "type": "cloud_region",
+    "operator": "Google Cloud",
+    "city": "Singapore",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "BRA",
+    "site_name": "GCP southamerica-east1 (São Paulo)",
+    "type": "cloud_region",
+    "operator": "Google Cloud",
+    "city": "São Paulo",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "AUS",
+    "site_name": "GCP australia-southeast1 (Sydney)",
+    "type": "cloud_region",
+    "operator": "Google Cloud",
+    "city": "Sydney",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "USA",
+    "site_name": "Azure East US (Virginia)",
+    "type": "cloud_region",
+    "operator": "Microsoft Azure",
+    "city": "Boydton, VA",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "USA",
+    "site_name": "Azure West US 2 (Washington)",
+    "type": "cloud_region",
+    "operator": "Microsoft Azure",
+    "city": "Quincy, WA",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "IRL",
+    "site_name": "Azure North Europe (Ireland)",
+    "type": "cloud_region",
+    "operator": "Microsoft Azure",
+    "city": "Dublin",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "NLD",
+    "site_name": "Azure West Europe (Netherlands)",
+    "type": "cloud_region",
+    "operator": "Microsoft Azure",
+    "city": "Amsterdam",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "SGP",
+    "site_name": "Azure Southeast Asia (Singapore)",
+    "type": "cloud_region",
+    "operator": "Microsoft Azure",
+    "city": "Singapore",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "IND",
+    "site_name": "Azure Central India (Pune)",
+    "type": "cloud_region",
+    "operator": "Microsoft Azure",
+    "city": "Pune",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "JPN",
+    "site_name": "Azure Japan East (Tokyo)",
+    "type": "cloud_region",
+    "operator": "Microsoft Azure",
+    "city": "Tokyo",
+    "mw": null,
+    "status": null,
+    "notes": "Region centroid"
+  },
+  {
+    "iso3": "USA",
+    "site_name": "ORNL Frontier (Oak Ridge)",
+    "type": "hpc",
+    "operator": "Oak Ridge National Laboratory",
+    "city": "Oak Ridge, TN",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "USA",
+    "site_name": "Argonne Aurora (Lemont)",
+    "type": "hpc",
+    "operator": "Argonne National Laboratory",
+    "city": "Lemont, IL",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "USA",
+    "site_name": "LLNL Sierra (Livermore)",
+    "type": "hpc",
+    "operator": "Lawrence Livermore National Laboratory",
+    "city": "Livermore, CA",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "USA",
+    "site_name": "NERSC Perlmutter (Berkeley)",
+    "type": "hpc",
+    "operator": "NERSC / Lawrence Berkeley National Laboratory",
+    "city": "Berkeley, CA",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "USA",
+    "site_name": "LANL (Los Alamos)",
+    "type": "hpc",
+    "operator": "Los Alamos National Laboratory",
+    "city": "Los Alamos, NM",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "JPN",
+    "site_name": "RIKEN Fugaku (Kobe)",
+    "type": "hpc",
+    "operator": "RIKEN / R-CCS",
+    "city": "Kobe",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "DEU",
+    "site_name": "Forschungszentrum Jülich JUWELS",
+    "type": "hpc",
+    "operator": "FZJ",
+    "city": "Jülich",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "CHE",
+    "site_name": "CSCS Piz Daint (Lugano)",
+    "type": "hpc",
+    "operator": "Swiss National Supercomputing Centre",
+    "city": "Lugano",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "FIN",
+    "site_name": "CSC LUMI (Kajaani)",
+    "type": "hpc",
+    "operator": "CSC – IT Center for Science",
+    "city": "Kajaani",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "DEU",
+    "site_name": "LRZ SuperMUC-NG (Garching)",
+    "type": "hpc",
+    "operator": "Leibniz Supercomputing Centre",
+    "city": "Garching",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "FRA",
+    "site_name": "CEA/TGCC (Bruyères-le-Châtel)",
+    "type": "hpc",
+    "operator": "CEA – Très Grand Centre de Calcul",
+    "city": "Bruyères-le-Châtel",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "ESP",
+    "site_name": "BSC MareNostrum (Barcelona)",
+    "type": "hpc",
+    "operator": "Barcelona Supercomputing Center",
+    "city": "Barcelona",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "ITA",
+    "site_name": "CINECA Leonardo (Bologna)",
+    "type": "hpc",
+    "operator": "CINECA",
+    "city": "Bologna",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "GBR",
+    "site_name": "NVIDIA Cambridge-1",
+    "type": "hpc",
+    "operator": "NVIDIA",
+    "city": "Cambridge",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "CHN",
+    "site_name": "Sunway TaihuLight (Wuxi)",
+    "type": "hpc",
+    "operator": "National Supercomputing Center in Wuxi",
+    "city": "Wuxi",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "CHN",
+    "site_name": "Tianhe-2 (Guangzhou)",
+    "type": "hpc",
+    "operator": "National Supercomputing Center in Guangzhou",
+    "city": "Guangzhou",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "KOR",
+    "site_name": "KISTI Nurion (Daejeon)",
+    "type": "hpc",
+    "operator": "KISTI",
+    "city": "Daejeon",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "AUS",
+    "site_name": "NCI Gadi (Canberra)",
+    "type": "hpc",
+    "operator": "National Computational Infrastructure",
+    "city": "Canberra",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "AUS",
+    "site_name": "Pawsey Setonix (Perth)",
+    "type": "hpc",
+    "operator": "Pawsey Supercomputing Research Centre",
+    "city": "Perth",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "USA",
+    "site_name": "SDSC (San Diego)",
+    "type": "hpc",
+    "operator": "San Diego Supercomputer Center",
+    "city": "San Diego, CA",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "USA",
+    "site_name": "TACC Frontera (Austin)",
+    "type": "hpc",
+    "operator": "Texas Advanced Computing Center",
+    "city": "Austin, TX",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "DEU",
+    "site_name": "HLRS Hawk (Stuttgart)",
+    "type": "hpc",
+    "operator": "High-Performance Computing Center Stuttgart",
+    "city": "Stuttgart",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "POL",
+    "site_name": "Poznań Supercomputing (PSNC)",
+    "type": "hpc",
+    "operator": "Poznań Supercomputing and Networking Center",
+    "city": "Poznań",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "SWE",
+    "site_name": "NSC Berzelius (Linköping)",
+    "type": "hpc",
+    "operator": "National Supercomputer Centre at Linköping University",
+    "city": "Linköping",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "CAN",
+    "site_name": "SciNet (Toronto)",
+    "type": "hpc",
+    "operator": "SciNet / University of Toronto",
+    "city": "Toronto",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "CAN",
+    "site_name": "Cedar (Burnaby)",
+    "type": "hpc",
+    "operator": "Simon Fraser University / Digital Research Alliance of Canada",
+    "city": "Burnaby",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "GBR",
+    "site_name": "EPCC ARCHER2 (Edinburgh)",
+    "type": "hpc",
+    "operator": "EPCC",
+    "city": "Edinburgh",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  },
+  {
+    "iso3": "NLD",
+    "site_name": "SURF Snellius (Amsterdam)",
+    "type": "hpc",
+    "operator": "SURF",
+    "city": "Amsterdam",
+    "mw": null,
+    "status": null,
+    "notes": "HPC site centroid"
+  }
+]

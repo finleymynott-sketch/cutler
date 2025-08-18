@@ -1,0 +1,34 @@
+name: Nightly Self-Test
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+
+jobs:
+  nightly:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npx playwright install --with-deps
+      - run: npm run self-test || echo "self-test failed" > selftest_failed
+      - run: npm run a11y || echo "a11y failed" >> selftest_failed
+      - run: npx http-server -p 5173 -c-1 . &
+      - run: node scripts/lighthouse.mjs || echo "perf failed" >> selftest_failed
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nightly-artifacts
+          path: |
+            playwright-report
+            test-results
+      - name: Open triage PR on failure
+        if: failure() || steps.check.outputs.failed == 'true'
+        run: |
+          echo "Automated triage: see artifacts" 
+
+

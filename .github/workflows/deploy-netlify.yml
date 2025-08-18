@@ -1,0 +1,38 @@
+name: Deploy to Netlify
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npx playwright install --with-deps
+      - name: Run self-test suite (blocks deploy on failure)
+        run: |
+          npm run self-test
+          npm run a11y
+      - name: Netlify Deploy
+        uses: netlify/actions/cli@v4
+        with:
+          args: deploy --dir=. --filter "!playwright-report" --message "${{ github.sha }}"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      - name: Netlify Deploy (production)
+        if: github.event_name == 'push'
+        uses: netlify/actions/cli@v4
+        with:
+          args: deploy --dir=. --prod --filter "!playwright-report" --message "${{ github.sha }}"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+

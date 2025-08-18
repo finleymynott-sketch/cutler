@@ -1,0 +1,116 @@
+{
+  "ARG": {
+    "name_en": "Argentina",
+    "capital_primary": "Buenos Aires",
+    "region": "Americas",
+    "subregion": "South America"
+  },
+  "AUS": {
+    "name_en": "Australia",
+    "capital_primary": "Canberra",
+    "region": "Oceania",
+    "subregion": "Australia and New Zealand"
+  },
+  "BRA": {
+    "name_en": "Brazil",
+    "capital_primary": "Brasília",
+    "region": "Americas",
+    "subregion": "South America"
+  },
+  "CAN": {
+    "name_en": "Canada",
+    "capital_primary": "Ottawa",
+    "region": "Americas",
+    "subregion": "Northern America"
+  },
+  "CHN": {
+    "name_en": "China",
+    "capital_primary": "Beijing",
+    "region": "Asia",
+    "subregion": "Eastern Asia"
+  },
+  "FRA": {
+    "name_en": "France",
+    "capital_primary": "Paris",
+    "region": "Europe",
+    "subregion": "Western Europe"
+  },
+  "DEU": {
+    "name_en": "Germany",
+    "capital_primary": "Berlin",
+    "region": "Europe",
+    "subregion": "Western Europe"
+  },
+  "IND": {
+    "name_en": "India",
+    "capital_primary": "New Delhi",
+    "region": "Asia",
+    "subregion": "Southern Asia"
+  },
+  "IDN": {
+    "name_en": "Indonesia",
+    "capital_primary": "Jakarta",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia"
+  },
+  "ITA": {
+    "name_en": "Italy",
+    "capital_primary": "Rome",
+    "region": "Europe",
+    "subregion": "Southern Europe"
+  },
+  "JPN": {
+    "name_en": "Japan",
+    "capital_primary": "Tokyo",
+    "region": "Asia",
+    "subregion": "Eastern Asia"
+  },
+  "MEX": {
+    "name_en": "Mexico",
+    "capital_primary": "Mexico City",
+    "region": "Americas",
+    "subregion": "Latin America and the Caribbean"
+  },
+  "RUS": {
+    "name_en": "Russia",
+    "capital_primary": "Moscow",
+    "region": "Europe",
+    "subregion": "Eastern Europe"
+  },
+  "SAU": {
+    "name_en": "Saudi Arabia",
+    "capital_primary": "Riyadh",
+    "region": "Asia",
+    "subregion": "Western Asia"
+  },
+  "ZAF": {
+    "name_en": "South Africa",
+    "capital_primary": "Pretoria",
+    "region": "Africa",
+    "subregion": "Southern Africa"
+  },
+  "KOR": {
+    "name_en": "South Korea",
+    "capital_primary": "Seoul",
+    "region": "Asia",
+    "subregion": "Eastern Asia"
+  },
+  "TUR": {
+    "name_en": "Türkiye",
+    "capital_primary": "Ankara",
+    "region": "Asia",
+    "subregion": "Western Asia"
+  },
+  "GBR": {
+    "name_en": "United Kingdom",
+    "capital_primary": "London",
+    "region": "Europe",
+    "subregion": "Northern Europe"
+  },
+  "USA": {
+    "name_en": "United States",
+    "capital_primary": "Washington, D.C.",
+    "region": "Americas",
+    "subregion": "Northern America"
+  }
+}

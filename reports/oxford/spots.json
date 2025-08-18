@@ -1,0 +1,337 @@
+[
+  {
+    "iso3": "USA",
+    "overall": 78,
+    "government": 82,
+    "technology_sector": 88,
+    "data_infrastructure": 74,
+    "absolute_bins": {
+      "overall": {
+        "bin": 4,
+        "range": [
+          75,
+          100
+        ]
+      },
+      "government": {
+        "bin": 4,
+        "range": [
+          75,
+          100
+        ]
+      },
+      "technology_sector": {
+        "bin": 4,
+        "range": [
+          75,
+          100
+        ]
+      },
+      "data_infrastructure": {
+        "bin": 3,
+        "range": [
+          50,
+          75
+        ]
+      }
+    },
+    "quantile_bins": {
+      "overall": {
+        "bin": 3,
+        "range": [
+          72,
+          81
+        ]
+      },
+      "government": {
+        "bin": 4,
+        "range": [
+          80,
+          90
+        ]
+      },
+      "technology_sector": {
+        "bin": 4,
+        "range": [
+          82,
+          88
+        ]
+      },
+      "data_infrastructure": {
+        "bin": 3,
+        "range": [
+          71,
+          79
+        ]
+      }
+    }
+  },
+  {
+    "iso3": "SGP",
+    "overall": 85,
+    "government": 90,
+    "technology_sector": 84,
+    "data_infrastructure": 86,
+    "absolute_bins": {
+      "overall": {
+        "bin": 4,
+        "range": [
+          75,
+          100
+        ]
+      },
+      "government": {
+        "bin": 4,
+        "range": [
+          75,
+          100
+        ]
+      },
+      "technology_sector": {
+        "bin": 4,
+        "range": [
+          75,
+          100
+        ]
+      },
+      "data_infrastructure": {
+        "bin": 4,
+        "range": [
+          75,
+          100
+        ]
+      }
+    },
+    "quantile_bins": {
+      "overall": {
+        "bin": 4,
+        "range": [
+          81,
+          85
+        ]
+      },
+      "government": {
+        "bin": 4,
+        "range": [
+          80,
+          90
+        ]
+      },
+      "technology_sector": {
+        "bin": 4,
+        "range": [
+          82,
+          88
+        ]
+      },
+      "data_infrastructure": {
+        "bin": 4,
+        "range": [
+          79,
+          86
+        ]
+      }
+    }
+  },
+  {
+    "iso3": "DEU",
+    "overall": 76,
+    "government": 73,
+    "technology_sector": 80,
+    "data_infrastructure": 78,
+    "absolute_bins": {
+      "overall": {
+        "bin": 4,
+        "range": [
+          75,
+          100
+        ]
+      },
+      "government": {
+        "bin": 3,
+        "range": [
+          50,
+          75
+        ]
+      },
+      "technology_sector": {
+        "bin": 4,
+        "range": [
+          75,
+          100
+        ]
+      },
+      "data_infrastructure": {
+        "bin": 4,
+        "range": [
+          75,
+          100
+        ]
+      }
+    },
+    "quantile_bins": {
+      "overall": {
+        "bin": 3,
+        "range": [
+          72,
+          81
+        ]
+      },
+      "government": {
+        "bin": 3,
+        "range": [
+          70,
+          80
+        ]
+      },
+      "technology_sector": {
+        "bin": 3,
+        "range": [
+          77,
+          82
+        ]
+      },
+      "data_infrastructure": {
+        "bin": 3,
+        "range": [
+          71,
+          79
+        ]
+      }
+    }
+  },
+  {
+    "iso3": "IND",
+    "overall": 62,
+    "government": 58,
+    "technology_sector": 66,
+    "data_infrastructure": 60,
+    "absolute_bins": {
+      "overall": {
+        "bin": 3,
+        "range": [
+          50,
+          75
+        ]
+      },
+      "government": {
+        "bin": 3,
+        "range": [
+          50,
+          75
+        ]
+      },
+      "technology_sector": {
+        "bin": 3,
+        "range": [
+          50,
+          75
+        ]
+      },
+      "data_infrastructure": {
+        "bin": 3,
+        "range": [
+          50,
+          75
+        ]
+      }
+    },
+    "quantile_bins": {
+      "overall": {
+        "bin": 2,
+        "range": [
+          59,
+          72
+        ]
+      },
+      "government": {
+        "bin": 2,
+        "range": [
+          57,
+          70
+        ]
+      },
+      "technology_sector": {
+        "bin": 2,
+        "range": [
+          61,
+          77
+        ]
+      },
+      "data_infrastructure": {
+        "bin": 2,
+        "range": [
+          58,
+          71
+        ]
+      }
+    }
+  },
+  {
+    "iso3": "ZAF",
+    "overall": 55,
+    "government": 52,
+    "technology_sector": 57,
+    "data_infrastructure": 54,
+    "absolute_bins": {
+      "overall": {
+        "bin": 3,
+        "range": [
+          50,
+          75
+        ]
+      },
+      "government": {
+        "bin": 3,
+        "range": [
+          50,
+          75
+        ]
+      },
+      "technology_sector": {
+        "bin": 3,
+        "range": [
+          50,
+          75
+        ]
+      },
+      "data_infrastructure": {
+        "bin": 3,
+        "range": [
+          50,
+          75
+        ]
+      }
+    },
+    "quantile_bins": {
+      "overall": {
+        "bin": 1,
+        "range": [
+          46,
+          59
+        ]
+      },
+      "government": {
+        "bin": 1,
+        "range": [
+          45,
+          57
+        ]
+      },
+      "technology_sector": {
+        "bin": 1,
+        "range": [
+          47,
+          61
+        ]
+      },
+      "data_infrastructure": {
+        "bin": 1,
+        "range": [
+          44,
+          58
+        ]
+      }
+    }
+  }
+]
