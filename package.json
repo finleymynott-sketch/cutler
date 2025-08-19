@@ -12,8 +12,7 @@
     "self-test": "start-server-and-test dev:serve http://127.0.0.1:5173 playwright test",
     "report": "playwright show-report",
     "perf": "node scripts/lighthouse.mjs",
-    "a11y": "playwright test tests/a11y.spec.ts",
-    "postinstall": "playwright install --with-deps"
+    "a11y": "playwright test tests/a11y.spec.ts"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.0",
